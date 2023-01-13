@@ -39,7 +39,7 @@ function generateUniqueId() {
   return `id-${timestamp}-${hexadecimalString}`;
 }
 
-function chatStripe (isAi, value, uniqueId) {
+function chatStripe(isAi, value, uniqueId) {
   return(
   `
     <div class="wrapper ${isAi && 'ai'}">
@@ -78,7 +78,6 @@ const handleSubmit = async (e) => {
   loader(messageDiv);
 
   // fetch data from server -> bot's reponse
-
   const response = await fetch('https://iris-sflo.onrender.com', {
     method: 'POST',
     headers: {
@@ -104,11 +103,14 @@ const handleSubmit = async (e) => {
 
     alert(err);
   }
+  form.reset();
 }
 
 form.addEventListener('submit', handleSubmit);
 form.addEventListener('keyup', (e) => {
+  console.log(e.keyCode);
   if (e.keyCode === 13) {
+    console.log("handleSubmit");
     handleSubmit(e);
   }
 })
